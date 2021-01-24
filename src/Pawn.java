@@ -9,8 +9,12 @@ public class Pawn extends Piece {
         if (super.getKilled()) {
             return false;
         }
+        // Trying src position does not match Pawn
+        if (board.getPiece(src) == null) {
+            return false;
+        }
         // Trying to team kill
-        if (board.getPiece(dst).isWhite() == board.getPiece(src).isWhite()) {
+        if (board.getPiece(dst) != null && board.getPiece(dst).isWhite() == board.getPiece(src).isWhite()) {
             return false;
         }
         // If diagonal is empty or moving too far horizontally
