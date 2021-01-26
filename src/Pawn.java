@@ -15,7 +15,7 @@ public class Pawn extends Piece {
             return false;
         }
         // Moving vertically too many spaces at once
-        if (Math.abs(src.getRow() - dst.getRow()) > 2) {
+        if (getRowDiff(src, dst) > 2) {
             return false;
         }
         if (super.isWhite()) {

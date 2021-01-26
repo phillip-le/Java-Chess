@@ -9,12 +9,10 @@ public class Knight extends Piece {
         if (!validPieceMove(board, src, dst)) {
             return false;
         }
-        int rowDiff = Math.abs(src.getRow() - dst.getRow());
-        int colDiff = Math.abs((int) src.getCol() - (int) dst.getCol());
-        if (!((rowDiff == 1 && colDiff == 2) || (rowDiff == 2 && colDiff == 1))) {
-            return false;
-        }
-        return true;
+        int rowDiff = getRowDiff(src, dst);
+        int colDiff = getColDiff(src, dst);
+        // True if the dst is an L shape away from the src, else false
+        return (rowDiff == 1 && colDiff == 2) || (rowDiff == 2 && colDiff == 1);
     }
 
     @Override

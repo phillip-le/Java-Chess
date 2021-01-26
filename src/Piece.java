@@ -48,4 +48,24 @@ public abstract class Piece {
         }
         return true;
     }
+
+    /**
+     * Gets the difference in rows between the starting and ending positions.
+     * @param src - the starting position.
+     * @param dst - the ending position.
+     * @return the difference in rows between the starting and ending positions.
+     */
+    protected int getRowDiff(Position src, Position dst) {
+        return Math.abs(src.getRow() - dst.getRow());
+    }
+
+    /**
+     * Gets the difference in columns between the starting and ending positions.
+     * @param src - the starting position.
+     * @param dst - the ending position.
+     * @return the difference in columns between the starting and ending positions.
+     */
+    protected int getColDiff(Position src, Position dst) {
+        return Math.abs((int) src.getCol() - (int) dst.getCol());
+    }
 }
