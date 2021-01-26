@@ -39,7 +39,7 @@ class QueenTest {
 
         assertTrue(black.canMove(board, init, new Position(4, 'a')));
         assertFalse(black.canMove(board, init, new Position(1, 'a')));
-        
+
         assertFalse(black.canMove(board, init, new Position(8, 'd')));
         assertFalse(black.canMove(board, init, new Position(5, 'f')));
     }
