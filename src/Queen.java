@@ -1,6 +1,6 @@
-public class Castle extends Piece {
+public class Queen extends Piece {
 
-    public Castle(boolean white) {
+    public Queen(boolean white) {
         super(white);
     }
 
@@ -9,9 +9,10 @@ public class Castle extends Piece {
         if (!validPieceMove(board, src, dst)) {
             return false;
         }
-        // Checks if only the rows are different or if only the cols are different
-        if (!((src.getRow() == dst.getRow() && src.getCol() != dst.getCol()) ||
-                (src.getRow() != dst.getRow() && src.getCol() == dst.getCol()))) {
+        // Checks (if only the rows are different or if only the cols are different) or if src and dst are diagonal
+        if (!(((src.getRow() == dst.getRow() && src.getCol() != dst.getCol()) ||
+                (src.getRow() != dst.getRow() && src.getCol() == dst.getCol())) ||
+                (getRowDiff(src, dst) == getColDiff(src, dst)))) {
             return false;
         }
         // The increment to add to the row, ensure range between -1 and 1
@@ -24,7 +25,6 @@ public class Castle extends Piece {
 
     @Override
     public String toString() {
-        return "c";
+        return "q";
     }
-
 }
