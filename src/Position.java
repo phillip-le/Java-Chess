@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Position {
     private final int row;
     private final char col;
@@ -17,6 +19,19 @@ public class Position {
 
     public char getCol() {
         return this.col;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position = (Position) o;
+        return row == position.row && col == position.col && Objects.equals(piece, position.piece);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(row, col, piece);
     }
 }
 

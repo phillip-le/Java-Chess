@@ -1,4 +1,7 @@
 import javafx.geometry.Pos;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,21 +10,21 @@ class PawnTest {
     private Pawn white;
     private Pawn black;
 
-    @org.junit.jupiter.api.BeforeEach
+    @BeforeEach
     void setUp() {
         board = new Board();
         white = new Pawn(true);
         black = new Pawn(false);
     }
 
-    @org.junit.jupiter.api.AfterEach
+    @AfterEach
     void tearDown() {
         board = null;
         white = null;
         black = null;
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void canMoveInitialTwoWhite() throws InvalidPositionException {
         char col = 'b';
         int initRow = 2;
@@ -33,7 +36,7 @@ class PawnTest {
         assertTrue(white.canMove(board, init, dstTwoAway));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void canMoveInitialTwoBlack() throws InvalidPositionException {
         char col = 'e';
         int initRow = 7;
@@ -45,7 +48,7 @@ class PawnTest {
         assertTrue(black.canMove(board, init, dstTwoAway));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void canMoveDiagonal() throws InvalidPositionException {
         int whiteRow = 4;
         char whiteCol = 'd';
@@ -57,7 +60,7 @@ class PawnTest {
         assertTrue(black.canMove(board, blackPos, whitePos));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void canMoveDiagonalEmptyWhite() throws InvalidPositionException {
         int whiteRow = 3;
         char whiteCol = 'e';
@@ -69,7 +72,7 @@ class PawnTest {
         assertFalse(white.canMove(board, whiteSrc, whiteRightDiag));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void canMoveDiagonalEmptyBlack() throws InvalidPositionException {
         int row = 5;
         char col = 'f';

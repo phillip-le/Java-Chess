@@ -6,15 +6,7 @@ public class Pawn extends Piece {
 
     @Override
     public boolean canMove(Board board, Position src, Position dst) {
-        if (super.getKilled()) {
-            return false;
-        }
-        // Trying src position does not match Pawn
-        if (board.getPiece(src) == null) {
-            return false;
-        }
-        // Trying to team kill
-        if (board.getPiece(dst) != null && board.getPiece(dst).isWhite() == board.getPiece(src).isWhite()) {
+        if (!validPieceMove(board, src, dst)) {
             return false;
         }
         // If diagonal is empty or moving too far horizontally
