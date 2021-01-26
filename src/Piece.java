@@ -50,6 +50,31 @@ public abstract class Piece {
     }
 
     /**
+     * Checks if the path between the src and dst are clear of obstacle pieces
+     * @param board which stores the location of pieces
+     * @param src - starting position of the piece
+     * @param dst - ending position of the piece
+     * @param rowInc - direction to increment for rows
+     * @param colInc - direction to increments for columns
+     * @return true if the path is clear between the src and dst, else false
+     */
+    protected boolean isPathClear(Board board, Position src, Position dst, int rowInc, int colInc) {
+        try {
+            Position testPosition = new Position(src.getRow() + rowInc, (char) ((int) src.getCol() + colInc));
+            // Check that the path is clear between the src and dst
+            while (!(testPosition.getRow() == dst.getRow() && testPosition.getCol() == dst.getCol())) {
+                if (board.getPiece(testPosition) != null) {
+                    return false;
+                }
+                testPosition = new Position(testPosition.getRow() + rowInc, (char) ((int) testPosition.getCol() + colInc));
+            }
+        } catch (InvalidPositionException ipe) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * Gets the difference in rows between the starting and ending positions.
      * @param src - the starting position.
      * @param dst - the ending position.

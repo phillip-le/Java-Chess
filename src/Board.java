@@ -16,4 +16,8 @@ public class Board {
     public void setPiece(Position position, Piece piece) {
         this.field.put(position, piece);
     }
+
+    public void removePiece(Position position, Piece piece) {
+        this.field.remove(position);
+    }
 }

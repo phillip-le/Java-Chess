@@ -26,7 +26,7 @@ class BishopTest {
     }
 
     @Test
-    void basicEmptyDiagonal() throws InvalidPositionException {
+    void basicMoveToEmpty() throws InvalidPositionException {
         int initRow = 4;
         char initCol = 'f';
         Position init = new Position(initRow, initCol);
@@ -41,7 +41,7 @@ class BishopTest {
     }
 
     @Test
-    void basicNonEmptyDiagonal() throws InvalidPositionException {
+    void basicMoveToCapture() throws InvalidPositionException {
         int initRow = 4;
         char initCol = 'f';
         Position init = new Position(initRow, initCol);
