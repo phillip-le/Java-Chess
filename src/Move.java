@@ -12,14 +12,26 @@ public class Move {
         this.dst = dst;
     }
 
+    /**
+     * Gets the player who made the move.
+     * @return the player who made the move.
+     */
     public Player getPlayer() {
         return this.player;
     }
 
+    /**
+     * Gets the starting position of the move.
+     * @return the starting position of the move.
+     */
     public Position getSrc() {
         return this.src;
     }
 
+    /**
+     * Gets the ending position of the move.
+     * @return the ending position of the move.
+     */
     public Position getDst() {
         return this.dst;
     }

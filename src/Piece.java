@@ -6,20 +6,42 @@ public abstract class Piece {
         this.white = white;
     }
 
+    /**
+     * Gets whether or not the piece is a white piece.
+     * @return true if white, else false.
+     */
     public boolean isWhite() {
         return this.white;
     }
 
+    /**
+     * Gets whether or not the piece has been killed.
+     * @return the killed status of the piece.
+     */
     public boolean getKilled() {
         return this.killed;
     }
 
+    /**
+     * Kills the piece.
+     */
     public void setKilled() {
         this.killed = true;
     }
 
+    /**
+     * Checks if the piece can move from the src position to the dst position.
+     * @param board - the board of the game.
+     * @param src - the starting position of the piece.
+     * @param dst - the ending position of the piece.
+     * @return true if the piece can move to dst, else false.
+     */
     public abstract boolean canMove(Board board, Position src, Position dst);
 
+    /**
+     * Gets string representing the piece.
+     * @return the string representing the piece.
+     */
     public abstract String toString();
 
     /**
