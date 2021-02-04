@@ -34,9 +34,12 @@ public class Board {
 
     public void setPiece(Position position, Piece piece) {
         field.put(position, piece);
+        getTeamPositions(piece.isWhite()).add(position);
     }
 
-    public void removePiece(Position position, Piece piece) {
+    public void removePiece(Position position) {
+        Piece piece = getPiece(position);
+        getTeamPositions(piece.isWhite()).remove(position);
         field.remove(position);
     }
 
