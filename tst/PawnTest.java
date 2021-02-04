@@ -11,7 +11,7 @@ class PawnTest {
     private Pawn black;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws InvalidPositionException {
         board = new Board();
         white = new Pawn(true);
         black = new Pawn(false);

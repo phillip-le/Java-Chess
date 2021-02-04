@@ -11,7 +11,7 @@ class KingTest {
     private King black;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws InvalidPositionException {
         board = new Board();
         white = new King(true);
         black = new King(false);
@@ -51,7 +51,7 @@ class KingTest {
         Position attackingCastlePos = new Position(8, 'd');
         Castle attackingCastle = new Castle(false);
         board.setPiece(attackingCastlePos, attackingCastle);
-        board.getTeamPieces(false).add(attackingCastlePos);
+        board.getTeamPositions(false).add(attackingCastlePos);
         for (int i = 1; i < 4; i++) {
             Position illegalMove = new Position(i, 'd');
             assertFalse(white.canMove(board, init, illegalMove));

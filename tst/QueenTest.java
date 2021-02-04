@@ -11,7 +11,7 @@ class QueenTest {
     private Queen black;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws InvalidPositionException {
         board = new Board();
         white = new Queen(true);
         black = new Queen(false);

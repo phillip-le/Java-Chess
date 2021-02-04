@@ -12,7 +12,7 @@ class BishopTest {
     private Bishop black;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws InvalidPositionException {
         board = new Board();
         white = new Bishop(true);
         black = new Bishop(false);

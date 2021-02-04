@@ -12,7 +12,7 @@ class CastleTest {
     private Castle black;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws InvalidPositionException {
         board = new Board();
         white = new Castle(true);
         black = new Castle(false);
