@@ -2,6 +2,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,16 +12,23 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-public class HelloWorld extends Application {
+import java.util.HashMap;
 
-    private static int WINDOW_SIZE = 480;
-    private static int ROW_COUNT = 8;
-    private static int SQUARE_SIZE = WINDOW_SIZE / ROW_COUNT;
+public class ChessApp extends Application {
 
+    private static final int WINDOW_SIZE = 480;
+    private static final int ROW_COUNT = 8;
+    public static final int SQUARE_SIZE = WINDOW_SIZE / ROW_COUNT;
+    private HashMap<Position, Square> board;
+    private Group squareGroup, pieceGroup;
 
-    private Parent createBoard() {
+    private Parent createBoard() throws InvalidPositionException {
         Pane root = new Pane();
         root.setPrefSize(WINDOW_SIZE, WINDOW_SIZE);
+        board = new HashMap<>();
+        squareGroup = new Group();
+        pieceGroup = new Group();
+
         int counter = 0;
         for (int i = 0; i < ROW_COUNT; i++) {
             for (int j = 0; j < ROW_COUNT; j++) {
@@ -32,27 +40,19 @@ public class HelloWorld extends Application {
                 }
                 square.setTranslateX(j * SQUARE_SIZE);
                 square.setTranslateY(i * SQUARE_SIZE);
-                root.getChildren().add(square);
+                board.put(new Position(i + 1, (char) (j + 'a')), square);
+                squareGroup.getChildren().add(square);
             }
             counter--;
         }
+        root.getChildren().addAll(squareGroup, pieceGroup);
         return root;
     }
 
-    private class Square extends StackPane {
-        public Square(boolean white) {
-            Rectangle square = new Rectangle(SQUARE_SIZE, SQUARE_SIZE);
-            if (white) {
-                square.setFill(null);
-            }
-            square.setStroke(Color.BLACK);
-            setAlignment(Pos.CENTER);
-            getChildren().add(square);
-        }
-    }
+
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws InvalidPositionException {
         stage.setScene(new Scene(createBoard()));
         stage.show();
     }

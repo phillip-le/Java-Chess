@@ -1,8 +1,11 @@
-public abstract class Piece {
-    private boolean killed = false;
-    private boolean white = false;
+import javafx.scene.layout.StackPane;
+
+public abstract class Piece extends StackPane {
+    private boolean killed;
+    private boolean white;
 
     public Piece(boolean white) {
+        this.killed = false;
         this.white = white;
     }
 
