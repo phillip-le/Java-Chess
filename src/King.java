@@ -1,9 +1,20 @@
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 public class King extends Piece {
 
-    public King(boolean white) {
+    public King(boolean white) throws FileNotFoundException {
         super(white);
+        if (white) {
+            image = new Image(new FileInputStream("src/images/King_White.png"));
+        } else {
+            image = new Image(new FileInputStream("src/images/King_Black.png"));
+        }
+        getChildren().add(new ImageView(image));
     }
 
     @Override

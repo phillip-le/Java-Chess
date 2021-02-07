@@ -3,6 +3,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +16,7 @@ class KnightTest {
     private Knight black;
 
     @BeforeEach
-    void setUp() throws InvalidPositionException {
+    void setUp() throws InvalidPositionException, FileNotFoundException {
         board = new Board();
         white = new Knight(true);
         black = new Knight(false);

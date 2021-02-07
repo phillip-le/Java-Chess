@@ -1,12 +1,14 @@
 import javafx.geometry.Pos;
 
+import java.io.FileNotFoundException;
+
 public class Game {
 
     private Board board;
     private Player whitePlayer;
     private Player blackPlayer;
 
-    public Game() throws InvalidPositionException {
+    public Game() throws InvalidPositionException, FileNotFoundException {
         board = new Board();
         whitePlayer = new Player(true);
         blackPlayer = new Player(false);

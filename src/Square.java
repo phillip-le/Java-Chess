@@ -20,4 +20,8 @@ public class Square extends StackPane {
     public boolean hasPiece() {
         return piece != null;
     }
+
+    public void setPiece(Piece piece) {
+        this.piece = piece;
+    }
 }

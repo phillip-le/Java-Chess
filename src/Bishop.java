@@ -1,7 +1,20 @@
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FilterInputStream;
+
 public class Bishop extends Piece {
 
-    public Bishop(boolean white) {
+    public Bishop(boolean white) throws FileNotFoundException {
         super(white);
+        if (white) {
+            image = new Image(new FileInputStream("src/images/Bishop_White.png"));
+        } else {
+            image = new Image(new FileInputStream("src/images/Bishop_Black.png"));
+        }
+        getChildren().add(new ImageView(image));
     }
 
     @Override

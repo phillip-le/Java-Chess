@@ -1,12 +1,27 @@
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
 public abstract class Piece extends StackPane {
     private boolean killed;
     private boolean white;
+    protected Image image;
 
     public Piece(boolean white) {
         this.killed = false;
         this.white = white;
+    }
+
+    /**
+     * Gets the Image of the Piece.
+     * @return the Image of the piece;
+     */
+    public Image getImage() {
+        if (getKilled()) {
+            return null;
+        }
+        return image;
     }
 
     /**

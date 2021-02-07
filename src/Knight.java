@@ -1,7 +1,19 @@
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class Knight extends Piece {
 
-    public Knight(boolean white) {
+    public Knight(boolean white) throws FileNotFoundException {
         super(white);
+        if (white) {
+            image = new Image(new FileInputStream("src/images/Knight_White.png"));
+        } else {
+            image = new Image(new FileInputStream("src/images/Knight_Black.png"));
+        }
+        getChildren().add(new ImageView(image));
     }
 
     @Override

@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Board {
@@ -6,7 +7,7 @@ public class Board {
     private List<Position> blackPositions;
     private List<Position> whitePositions;
 
-    public Board() throws InvalidPositionException {
+    public Board() throws InvalidPositionException, FileNotFoundException {
         field = new Hashtable<>();
         blackPositions = new ArrayList<>(numTeamPieces);
         whitePositions = new ArrayList<>(numTeamPieces);

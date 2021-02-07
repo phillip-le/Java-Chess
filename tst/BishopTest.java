@@ -3,6 +3,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BishopTest {
@@ -12,7 +14,7 @@ class BishopTest {
     private Bishop black;
 
     @BeforeEach
-    void setUp() throws InvalidPositionException {
+    void setUp() throws InvalidPositionException, FileNotFoundException {
         board = new Board();
         white = new Bishop(true);
         black = new Bishop(false);
@@ -41,7 +43,7 @@ class BishopTest {
     }
 
     @Test
-    void basicMoveToCapture() throws InvalidPositionException {
+    void basicMoveToCapture() throws InvalidPositionException, FileNotFoundException {
         int initRow = 4;
         char initCol = 'f';
         Position init = new Position(initRow, initCol);

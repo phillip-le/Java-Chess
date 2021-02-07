@@ -3,6 +3,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CastleTest {
@@ -12,7 +14,7 @@ class CastleTest {
     private Castle black;
 
     @BeforeEach
-    void setUp() throws InvalidPositionException {
+    void setUp() throws InvalidPositionException, FileNotFoundException {
         board = new Board();
         white = new Castle(true);
         black = new Castle(false);
@@ -45,7 +47,7 @@ class CastleTest {
     }
 
     @Test
-    void basicMoveToCaptureHorizontal() throws InvalidPositionException {
+    void basicMoveToCaptureHorizontal() throws InvalidPositionException, FileNotFoundException {
         int initRow = 5;
         char initCol = 'e';
         Position init = new Position(initRow, initCol);
@@ -67,7 +69,7 @@ class CastleTest {
     }
 
     @Test
-    void basicMoveToCaptureVertical() throws InvalidPositionException {
+    void basicMoveToCaptureVertical() throws InvalidPositionException, FileNotFoundException {
         int initRow = 5;
         char initCol = 'e';
         Position init = new Position(initRow, initCol);

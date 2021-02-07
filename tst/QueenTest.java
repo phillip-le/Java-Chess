@@ -2,6 +2,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class QueenTest {
@@ -11,7 +13,7 @@ class QueenTest {
     private Queen black;
 
     @BeforeEach
-    void setUp() throws InvalidPositionException {
+    void setUp() throws InvalidPositionException, FileNotFoundException {
         board = new Board();
         white = new Queen(true);
         black = new Queen(false);
@@ -61,7 +63,7 @@ class QueenTest {
     }
 
     @Test
-    void basicDiagonalMoveToCapture() throws InvalidPositionException {
+    void basicDiagonalMoveToCapture() throws InvalidPositionException, FileNotFoundException {
         int initRow = 4;
         char initCol = 'f';
         Position init = new Position(initRow, initCol);
@@ -90,7 +92,7 @@ class QueenTest {
     }
 
     @Test
-    void basicHorizontalMoveToCapture() throws InvalidPositionException {
+    void basicHorizontalMoveToCapture() throws InvalidPositionException, FileNotFoundException {
         int initRow = 5;
         char initCol = 'e';
         Position init = new Position(initRow, initCol);
@@ -112,7 +114,7 @@ class QueenTest {
     }
 
     @Test
-    void basicVerticalMoveToCapture() throws InvalidPositionException {
+    void basicVerticalMoveToCapture() throws InvalidPositionException, FileNotFoundException {
         int initRow = 5;
         char initCol = 'e';
         Position init = new Position(initRow, initCol);
