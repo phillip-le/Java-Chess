@@ -13,7 +13,7 @@ public class Queen extends Piece {
         } else {
             image = new Image(new FileInputStream("src/images/Queen_Black.png"));
         }
-        getChildren().add(new ImageView(image));
+        addIcon(image);
     }
 
     @Override

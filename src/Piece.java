@@ -133,4 +133,11 @@ public abstract class Piece extends StackPane {
     protected int getColDiff(Position src, Position dst) {
         return Math.abs((int) src.getCol() - (int) dst.getCol());
     }
+
+    protected void addIcon(Image img) {
+        ImageView icon = new ImageView(img);
+        icon.setFitWidth(ChessApp.SQUARE_SIZE);
+        icon.setPreserveRatio(true);
+        getChildren().add(icon);
+    }
 }

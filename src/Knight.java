@@ -1,3 +1,4 @@
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -13,7 +14,7 @@ public class Knight extends Piece {
         } else {
             image = new Image(new FileInputStream("src/images/Knight_Black.png"));
         }
-        getChildren().add(new ImageView(image));
+        addIcon(image);
     }
 
     @Override

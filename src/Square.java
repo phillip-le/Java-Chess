@@ -10,7 +10,9 @@ public class Square extends StackPane {
     public Square(boolean white) {
         Rectangle square = new Rectangle(ChessApp.SQUARE_SIZE, ChessApp.SQUARE_SIZE);
         if (white) {
-            square.setFill(null);
+            square.setFill(Color.web("#F9E487"));
+        } else {
+            square.setFill(Color.web("#9C7B4B"));
         }
         square.setStroke(Color.BLACK);
         setAlignment(Pos.CENTER);

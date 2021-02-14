@@ -13,7 +13,7 @@ public class Pawn extends Piece {
         } else {
             image = new Image(new FileInputStream("src/images/Pawn_Black.png"));
         }
-        getChildren().add(new ImageView(image));
+        addIcon(image);
     }
 
     @Override

@@ -14,7 +14,7 @@ public class Bishop extends Piece {
         } else {
             image = new Image(new FileInputStream("src/images/Bishop_Black.png"));
         }
-        getChildren().add(new ImageView(image));
+        addIcon(image);
     }
 
     @Override

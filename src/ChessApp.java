@@ -48,16 +48,16 @@ public class ChessApp extends Application {
             }
             counter--;
         }
-        for (Position p : game.getBoard().getTeamPositions(true)) {
-            Piece piece = game.getBoard().getPiece(p);
-            display.get(p).setPiece(piece);
-            pieceGroup.getChildren().add(piece);
-        }
-        for (Position p : game.getBoard().getTeamPositions(false)) {
-            Piece piece = game.getBoard().getPiece(p);
-            display.get(p).setPiece(piece);
-            pieceGroup.getChildren().add(piece);
-        }
+//        for (Position p : game.getBoard().getTeamPositions(true)) {
+//            Piece piece = game.getBoard().getPiece(p);
+//            display.get(p).setPiece(piece);
+//            pieceGroup.getChildren().add(piece);
+//        }
+//        for (Position p : game.getBoard().getTeamPositions(false)) {
+//            Piece piece = game.getBoard().getPiece(p);
+//            display.get(p).setPiece(piece);
+//            pieceGroup.getChildren().add(piece);
+//        }
 
         root.getChildren().addAll(squareGroup, pieceGroup);
         return root;

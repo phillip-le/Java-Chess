@@ -14,7 +14,7 @@ public class King extends Piece {
         } else {
             image = new Image(new FileInputStream("src/images/King_Black.png"));
         }
-        getChildren().add(new ImageView(image));
+        addIcon(image);
     }
 
     @Override
