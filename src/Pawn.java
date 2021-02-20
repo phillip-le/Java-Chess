@@ -48,6 +48,10 @@ public class Pawn extends Piece {
                 return false;
             }
         }
+        // Trying to move into position occupied by another piece
+        if (src.getCol() == dst.getCol() && board.getPiece(dst) != null) {
+            return false;
+        }
         return true;
     }
 
