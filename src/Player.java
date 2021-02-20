@@ -1,4 +1,6 @@
 public class Player {
+
+    // Specifies whether the player is white or black
     private boolean white;
 
     public Player(boolean white) {
