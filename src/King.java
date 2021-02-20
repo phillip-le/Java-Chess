@@ -24,13 +24,35 @@ public class King extends Piece {
         if (getRowDiff(src, dst) > 1 || getColDiff(src, dst) > 1) {
             return false;
         }
+        Piece oldDstPiece = testMove(board, src, dst);
         List<Position> opposingTeamPos = board.getTeamPositions(!isWhite());
         for (Position p : opposingTeamPos) {
             if (board.getPiece(p).canMove(board, p, dst)) {
+                System.out.println(p.toString() + " can Move to checkmate!");
+                undoTestMove(board, src, dst, oldDstPiece);
                 return false;
             }
         }
+        undoTestMove(board, src, dst, oldDstPiece);
         return true;
+    }
+
+    private Piece testMove(Board board, Position src, Position dst) {
+        Piece oldDstPiece = board.getPiece(dst);
+        if (oldDstPiece != null) {
+            board.removePiece(dst);
+        }
+        board.removePiece(src);
+        board.setPiece(dst, this);
+        return oldDstPiece;
+    }
+
+    private void undoTestMove(Board board, Position src, Position dst, Piece oldDstPiece) {
+        board.removePiece(dst);
+        board.setPiece(src, this);
+        if (oldDstPiece != null) {
+            board.setPiece(dst, oldDstPiece);
+        }
     }
 
     @Override

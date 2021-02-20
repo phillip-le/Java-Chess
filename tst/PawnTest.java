@@ -15,6 +15,7 @@ class PawnTest {
     @BeforeEach
     void setUp() throws InvalidPositionException, FileNotFoundException {
         board = new Board();
+        board.clearBoard();
         white = new Pawn(true);
         black = new Pawn(false);
     }

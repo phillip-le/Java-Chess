@@ -16,6 +16,7 @@ class CastleTest {
     @BeforeEach
     void setUp() throws InvalidPositionException, FileNotFoundException {
         board = new Board();
+        board.clearBoard();
         white = new Castle(true);
         black = new Castle(false);
     }

@@ -18,6 +18,7 @@ class KnightTest {
     @BeforeEach
     void setUp() throws InvalidPositionException, FileNotFoundException {
         board = new Board();
+        board.clearBoard();
         white = new Knight(true);
         black = new Knight(false);
     }

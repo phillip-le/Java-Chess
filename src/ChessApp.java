@@ -24,10 +24,6 @@ public class ChessApp extends Application {
     private HashMap<Position, Square> display;
     private Game game;
 
-    // Specifies if it is white's turn to play
-    private Player currentPlayer;
-    private Player whitePlayer, blackPlayer;
-
     private boolean lookingForMove;
     private Position selectedPosition;
 
@@ -44,11 +40,7 @@ public class ChessApp extends Application {
         pieceGroup = new Group();
         display = new HashMap<>();
         game = new Game();
-        whitePlayer = new Player(true);
-        blackPlayer = new Player(false);
-        currentPlayer = whitePlayer;
         lookingForMove = false;
-
 
         int counter = 0;
         for (int row = ROW_COUNT; row >= 1; row--) {
@@ -87,6 +79,7 @@ public class ChessApp extends Application {
         if (pos == null) {
             return;
         }
+        Player currentPlayer = game.getCurrentPlayer();
         // If trying to select an empty square to move from
         if (!lookingForMove) {
             Piece selectedPiece = game.getBoard().getPiece(pos);
@@ -112,11 +105,12 @@ public class ChessApp extends Application {
         if (game.validMove(move)) {
             System.out.println("Moved piece!");
             movePiece(move);
-            if (currentPlayer.isWhite()) {
-                currentPlayer = blackPlayer;
-            } else {
-                currentPlayer = whitePlayer;
+            if (game.isCheckmate(game.whiteKingPos)) {
+                System.out.println("Black won!");
+            } else if (game.isCheckmate(game.blackKingPos)) {
+                System.out.println("White won!");
             }
+            game.switchPlayers();
         }
         resetLookingForMove();
     }

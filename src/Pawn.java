@@ -25,6 +25,10 @@ public class Pawn extends Piece {
                 Math.abs((int) src.getCol() - (int) dst.getCol()) > 1)) {
             return false;
         }
+        // Moving horizontally but not diagonally
+        if (getRowDiff(src, dst) == 0 && getColDiff(src, dst) > 0) {
+            return false;
+        }
         // Moving vertically too many spaces at once
         if (getRowDiff(src, dst) > 2) {
             return false;

@@ -15,6 +15,7 @@ class KingTest {
     @BeforeEach
     void setUp() throws InvalidPositionException, FileNotFoundException {
         board = new Board();
+        board.clearBoard();
         white = new King(true);
         black = new King(false);
     }

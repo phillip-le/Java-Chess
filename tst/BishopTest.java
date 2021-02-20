@@ -16,6 +16,7 @@ class BishopTest {
     @BeforeEach
     void setUp() throws InvalidPositionException, FileNotFoundException {
         board = new Board();
+        board.clearBoard();
         white = new Bishop(true);
         black = new Bishop(false);
     }

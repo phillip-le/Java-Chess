@@ -8,10 +8,7 @@ public class Board {
     private List<Position> whitePositions;
 
     public Board() throws InvalidPositionException, FileNotFoundException {
-        field = new Hashtable<>();
-        blackPositions = new ArrayList<>(numTeamPieces);
-        whitePositions = new ArrayList<>(numTeamPieces);
-
+        clearBoard();
         // Setup the board
         for (char col = 'a'; col <= 'h'; col++) {
             addPiece(new Pawn(true), new Position(2, col));
@@ -71,6 +68,12 @@ public class Board {
         whitePositions.add(whiteRightPos);
         blackPositions.add(blackLeftPos);
         blackPositions.add(blackRightPos);
+    }
+
+    public void clearBoard() {
+        field = new Hashtable<>();
+        blackPositions = new ArrayList<>(numTeamPieces);
+        whitePositions = new ArrayList<>(numTeamPieces);
     }
 
     public void printBoard() throws InvalidPositionException {
