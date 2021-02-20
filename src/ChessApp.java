@@ -62,9 +62,7 @@ public class ChessApp extends Application {
             }
             counter--;
         }
-        root.setOnMouseClicked(e -> {
-            selectSquare(clickToPos(e.getSceneX(), e.getSceneY()));
-        });
+        root.setOnMouseClicked(e -> selectSquare(clickToPos(e.getSceneX(), e.getSceneY())));
         root.getChildren().addAll(squareGroup, pieceGroup);
         return root;
     }
@@ -92,16 +90,16 @@ public class ChessApp extends Application {
         Piece piece = game.getBoard().getPiece(selectedPosition);
         System.out.println("Trying to move " + piece.isWhite() + " " + piece.toString());
         Move move = new Move(currentPlayer, selectedPosition, pos);
-        if (piece.canMove(game.getBoard(), selectedPosition, pos) && game.validMove(move)) {
+        if (game.validMove(move)) {
             System.out.println("Moved piece!");
             movePiece(move);
+            if (currentPlayer.isWhite()) {
+                currentPlayer = blackPlayer;
+            } else {
+                currentPlayer = whitePlayer;
+            }
         }
         resetLookingForMove();
-        if (currentPlayer.isWhite()) {
-            currentPlayer = blackPlayer;
-        } else {
-            currentPlayer = whitePlayer;
-        }
     }
 
     private void resetLookingForMove() {
