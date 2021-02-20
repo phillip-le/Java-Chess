@@ -1,5 +1,3 @@
-import javafx.geometry.Pos;
-
 import java.io.FileNotFoundException;
 
 public class Game {
@@ -45,9 +43,6 @@ public class Game {
         }
         Piece srcPiece = board.getPiece(move.getSrc());
         srcPiece.moveIcon(move.getDst());
-        try {
-            dstPiece.relocate(-100, -100);
-        } catch (NullPointerException ignored) { }
         board.setPiece(move.getDst(), srcPiece);
         board.removePiece(move.getSrc());
     }

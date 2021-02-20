@@ -112,6 +112,7 @@ public class ChessApp extends Application {
         Piece piece = game.getBoard().getPiece(move.getSrc());
         display.get(move.getSrc()).setPiece(null);
         display.get(move.getDst()).setPiece(piece);
+        pieceGroup.getChildren().remove(game.getBoard().getPiece(move.getDst()));
         game.makeMove(move);
     }
 
