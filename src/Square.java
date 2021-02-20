@@ -6,17 +6,32 @@ import javafx.scene.shape.Rectangle;
 public class Square extends StackPane {
 
     private Piece piece;
+    private Rectangle square;
+    private boolean white;
 
     public Square(boolean white) {
-        Rectangle square = new Rectangle(ChessApp.SQUARE_SIZE, ChessApp.SQUARE_SIZE);
-        if (white) {
-            square.setFill(Color.web("#F9E487"));
-        } else {
-            square.setFill(Color.web("#9C7B4B"));
-        }
+        square = new Rectangle(ChessApp.SQUARE_SIZE, ChessApp.SQUARE_SIZE);
+        this.white = white;
+        setDefaultFill();
         square.setStroke(Color.BLACK);
         setAlignment(Pos.CENTER);
         getChildren().add(square);
+    }
+
+    public void setDefaultFill() {
+        if (white) {
+            setFill(ChessApp.WHITE_SQUARE);
+        } else {
+            setFill(ChessApp.BLACK_SQUARE);
+        }
+    }
+
+    public void setFill(String colour) {
+        square.setFill(Color.web(colour));
+    }
+
+    public boolean isWhite() {
+        return white;
     }
 
     public boolean hasPiece() {

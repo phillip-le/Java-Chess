@@ -1,12 +1,13 @@
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
 public abstract class Piece extends StackPane {
     private boolean killed;
-    private boolean white;
+    private final boolean white;
+    protected ImageView icon;
     protected Image image;
+    private double oldX, oldY;
 
     public Piece(boolean white) {
         this.killed = false;
@@ -135,9 +136,15 @@ public abstract class Piece extends StackPane {
     }
 
     protected void addIcon(Image img) {
-        ImageView icon = new ImageView(img);
+        icon = new ImageView(img);
         icon.setFitWidth(ChessApp.SQUARE_SIZE);
         icon.setPreserveRatio(true);
         getChildren().add(icon);
+    }
+
+    protected void moveIcon(Position pos) {
+        oldX = Utility.charToInt(pos.getCol()) * ChessApp.SQUARE_SIZE;
+        oldY = (8 - pos.getRow()) * ChessApp.SQUARE_SIZE;
+        relocate(oldX, oldY);
     }
 }

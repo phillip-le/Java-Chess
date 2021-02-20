@@ -33,6 +33,11 @@ public class Position {
     public int hashCode() {
         return Objects.hash(row, col, piece);
     }
+
+    @Override
+    public String toString() {
+        return row + String.valueOf(col);
+    }
 }
 
 class InvalidPositionException extends Exception {

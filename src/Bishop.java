@@ -1,9 +1,7 @@
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FilterInputStream;
 
 public class Bishop extends Piece {
 

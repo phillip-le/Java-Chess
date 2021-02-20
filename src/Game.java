@@ -43,7 +43,12 @@ public class Game {
             dstPiece.setKilled();
             board.removePiece(move.getDst());
         }
-        board.setPiece(move.getDst(), board.getPiece(move.getSrc()));
+        Piece srcPiece = board.getPiece(move.getSrc());
+        srcPiece.moveIcon(move.getDst());
+        try {
+            dstPiece.relocate(-100, -100);
+        } catch (NullPointerException ignored) { }
+        board.setPiece(move.getDst(), srcPiece);
         board.removePiece(move.getSrc());
     }
 
