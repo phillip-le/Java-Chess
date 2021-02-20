@@ -1,5 +1,4 @@
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,7 +17,7 @@ public class Queen extends Piece {
 
     @Override
     public boolean canMove(Board board, Position src, Position dst) {
-        if (!validPieceMove(board, src, dst)) {
+        if (invalidPieceMove(board, src, dst)) {
             return false;
         }
         // Checks (if only the rows are different or if only the cols are different) or if src and dst are diagonal

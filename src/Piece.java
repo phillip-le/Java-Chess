@@ -7,22 +7,10 @@ public abstract class Piece extends StackPane {
     private final boolean white;
     protected ImageView icon;
     protected Image image;
-    private double oldX, oldY;
 
     public Piece(boolean white) {
         this.killed = false;
         this.white = white;
-    }
-
-    /**
-     * Gets the Image of the Piece.
-     * @return the Image of the piece;
-     */
-    public Image getImage() {
-        if (getKilled()) {
-            return null;
-        }
-        return image;
     }
 
     /**
@@ -70,24 +58,21 @@ public abstract class Piece extends StackPane {
      * @param dst - ending position of the piece
      * @return true if it passes basic checks, else false
      */
-    protected boolean validPieceMove(Board board, Position src, Position dst) {
+    protected boolean invalidPieceMove(Board board, Position src, Position dst) {
         // Can't move a dead piece
         if (this.getKilled()) {
-            return false;
+            return true;
         }
         // Src position does not match Piece's position
         if (board.getPiece(src) == null) {
-            return false;
+            return true;
         }
         // Trying to team kill
         if (board.getPiece(dst) != null && board.getPiece(dst).isWhite() == board.getPiece(src).isWhite()) {
-            return false;
+            return true;
         }
         // Trying to move in-place
-        if (src.getRow() == dst.getRow() && src.getCol() == dst.getCol()) {
-            return false;
-        }
-        return true;
+        return src.getRow() == dst.getRow() && src.getCol() == dst.getCol();
     }
 
     /**
@@ -143,8 +128,8 @@ public abstract class Piece extends StackPane {
     }
 
     protected void moveIcon(Position pos) {
-        oldX = Utility.charToInt(pos.getCol()) * ChessApp.SQUARE_SIZE;
-        oldY = (8 - pos.getRow()) * ChessApp.SQUARE_SIZE;
-        relocate(oldX, oldY);
+        double x = Utility.charToInt(pos.getCol()) * ChessApp.SQUARE_SIZE;
+        double y = (8 - pos.getRow()) * ChessApp.SQUARE_SIZE;
+        relocate(x, y);
     }
 }

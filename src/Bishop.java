@@ -17,7 +17,7 @@ public class Bishop extends Piece {
 
     @Override
     public boolean canMove(Board board, Position src, Position dst) {
-        if (!validPieceMove(board, src, dst)) {
+        if (invalidPieceMove(board, src, dst)) {
             return false;
         }
         // True if the dst is diagonal to the src, else false

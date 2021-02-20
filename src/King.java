@@ -1,5 +1,4 @@
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,7 +18,7 @@ public class King extends Piece {
 
     @Override
     public boolean canMove(Board board, Position src, Position dst) {
-        if (!validPieceMove(board, src, dst)) {
+        if (invalidPieceMove(board, src, dst)) {
             return false;
         }
         if (getRowDiff(src, dst) > 1 || getColDiff(src, dst) > 1) {

@@ -1,5 +1,4 @@
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,7 +17,7 @@ public class Pawn extends Piece {
 
     @Override
     public boolean canMove(Board board, Position src, Position dst) {
-        if (!validPieceMove(board, src, dst)) {
+        if (invalidPieceMove(board, src, dst)) {
             return false;
         }
         // If diagonal is empty or moving too far horizontally
